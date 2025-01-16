@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "raylib.h"
 #include "gpads.h"
+#include "kbd.h"
 
 #if defined(PLATFORM_WEB)
 #include <emscripten/emscripten.h>
@@ -80,28 +81,27 @@ static void UpdateDrawFrame(void)
     case CMD_NONE:
         break;
     case CMD_MOVE_LEFT:
-        cubePosition.x = (cubePosition.x > 0) ? cubePosition.x - 1 : 0;
+        cubePosition.x -= .1;
         break;
     case CMD_MOVE_RIGHT:
-    {
-        int w = GetScreenWidth();
-        cubePosition.x = (cubePosition.x < w) ? cubePosition.x + 1 : w;
+        cubePosition.x += .1;
         break;
-    }
     case CMD_MOVE_UP:
-        cubePosition.y = (cubePosition.y > 0) ? cubePosition.y - 1 : 0;
+        cubePosition.z -= .1;
         break;
     case CMD_MOVE_DOWN:
-    {
-        int h = GetScreenHeight();
-        cubePosition.y = (cubePosition.y < h) ? cubePosition.y + 1 : h;
+        cubePosition.z += .1;
         break;
-    }
     case CMD_MOVE_IN:
-        --cubePosition.z;
+        cubePosition.y += .1;
         break;
     case CMD_MOVE_OUT:
-        ++cubePosition.z;
+        cubePosition.y -= .1;
+        break;
+    case CMD_MOVE_HOME:
+        cubePosition.x = 0;
+        cubePosition.y = 0;
+        cubePosition.z = 0;
         break;
 
     default:
@@ -137,12 +137,10 @@ static void UpdateDrawFrame(void)
 
 static Cmd UpdateInput(void)
 {
-    static double next_input = 0.0;
-    double now = GetTime();
-    if (next_input < now)
+    Cmd cmd = checkGamePads();
+    if (cmd == CMD_UNDEFINED)
     {
-        next_input = now + .1;
-        return checkGamePads();
+        cmd = checkKeyboard();
     }
-    return CMD_UNDEFINED;
+    return cmd;
 }

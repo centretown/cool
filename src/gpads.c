@@ -85,6 +85,8 @@ Cmd checkGamePad(int pad)
         return CMD_MOVE_IN;
     if (IsGamepadButtonDown(pad, GAMEPAD_BUTTON_RIGHT_TRIGGER_1))
         return CMD_MOVE_OUT;
+    if (IsGamepadButtonDown(pad, GAMEPAD_BUTTON_MIDDLE_RIGHT))
+        return CMD_MOVE_HOME;
     return CMD_UNDEFINED;
 }
 

@@ -13,6 +13,7 @@ typedef enum
     CMD_MOVE_DOWN,
     CMD_MOVE_IN,
     CMD_MOVE_OUT,
+    CMD_MOVE_HOME,
 } Cmd;
 
 typedef struct
