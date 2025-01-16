@@ -15,6 +15,6 @@ typedef struct
     int Qsize;
 } Pad;
 
-Cmd checkGamePads(); // detect gamepads
+Cmd CheckGamePads(); // detect gamepads
 
 #endif // GPADS_COOL_DEFINED

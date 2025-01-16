@@ -2,7 +2,7 @@
 
 ### Description
 
-my cool new project
+Cool. A collection of Raylib experiments.
 
 ### Features
 
@@ -12,7 +12,7 @@ my cool new project
 
 ### Controls
 
-Keyboard/Mouse:
+Keyboard/Mouse/Gamepad:
  - $(project Control 01)
  - $(project Control 02)
  - $(project Control 03)

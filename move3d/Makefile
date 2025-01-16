@@ -29,10 +29,10 @@
 PLATFORM              ?= PLATFORM_DESKTOP
 
 # Define project variables
-PROJECT_NAME          ?= cool
+PROJECT_NAME          ?= move3d
 PROJECT_VERSION       ?= 1.0
 PROJECT_BUILD_PATH    ?= .
-PROJECT_SOURCE_FILES  ?= cool.c gpads.c cmd.c kbd.c
+PROJECT_SOURCE_FILES  ?= move3d.c $(wildcard ../lib/*.c)
 
 RAYLIB_SRC_PATH       ?= C:\raylib\raylib\src
 RAYLIB_INCLUDE_PATH   ?= $(RAYLIB_SRC_PATH)

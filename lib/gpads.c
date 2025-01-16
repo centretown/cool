@@ -26,7 +26,7 @@ static const char *button_names[] = {
     "right thumb",
 };
 static size_t max_buttons = sizeof(button_names) / sizeof(button_names[0]);
-static inline const char *button_name(int button)
+static inline const char *ButtonName(int button)
 {
     if (button < 0 || button >= max_buttons)
         return undefined;
@@ -43,14 +43,14 @@ static const char *axis_names[] = {
 };
 static size_t max_axes = sizeof(axis_names) / sizeof(axis_names[0]);
 
-static inline const char *axis_name(int axis)
+static inline const char *AxisName(int axis)
 {
     if (axis < 0 || axis >= max_axes)
         return undefined;
     return axis_names[axis];
 }
 
-Cmd checkGamePad(int pad)
+Cmd CheckGamePad(int pad)
 {
     if (pad < 0 || pad >= max_game_pads)
     {
@@ -90,11 +90,11 @@ Cmd checkGamePad(int pad)
     return CMD_UNDEFINED;
 }
 
-Cmd checkGamePads()
+Cmd CheckGamePads()
 {
     for (int i = 0; i < max_game_pads; i++)
     {
-        Cmd cmd = checkGamePad(i);
+        Cmd cmd = CheckGamePad(i);
         if (cmd != CMD_UNDEFINED)
         {
             return cmd;

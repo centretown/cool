@@ -10,8 +10,8 @@
  ********************************************************************************************/
 #include <stdio.h>
 #include "raylib.h"
-#include "gpads.h"
-#include "kbd.h"
+#include "../lib/gpads.h"
+#include "../lib/kbd.h"
 
 #if defined(PLATFORM_WEB)
 #include <emscripten/emscripten.h>
@@ -137,7 +137,7 @@ static void UpdateDrawFrame(void)
 
 static Cmd UpdateInput(void)
 {
-    Cmd cmd = checkGamePads();
+    Cmd cmd = CheckGamePads();
     if (cmd == CMD_UNDEFINED)
     {
         cmd = checkKeyboard();
