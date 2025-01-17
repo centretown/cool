@@ -26,12 +26,13 @@
 # Define required environment variables
 #------------------------------------------------------------------------------------------------
 # Define target platform: PLATFORM_DESKTOP, PLATFORM_WEB, PLATFORM_DRM
-PLATFORM              ?= PLATFORM_DESKTOP
+PLATFORM              ?= PLATFORM_WEB
 
 # Define project variables
 PROJECT_NAME          ?= move3d
 PROJECT_VERSION       ?= 1.0
 PROJECT_BUILD_PATH    ?= .
+# PROJECT_SOURCE_FILES  ?= move3d.c ../lib/cmd.c ../lib/kbd.c ../lib/gpads.c 
 PROJECT_SOURCE_FILES  ?= move3d.c $(wildcard ../lib/*.c)
 
 RAYLIB_SRC_PATH       ?= C:\raylib\raylib\src
@@ -94,7 +95,7 @@ endif
 
 ifeq ($(PLATFORM),PLATFORM_WEB)
     # Emscripten required variables
-    EMSDK_PATH         ?= C:/emsdk
+    EMSDK_PATH         ?= /home/dave/src/emsdk
     EMSCRIPTEN_PATH    ?= $(EMSDK_PATH)/upstream/emscripten
     CLANG_PATH          = $(EMSDK_PATH)/upstream/bin
     PYTHON_PATH         = $(EMSDK_PATH)/python/3.9.2-1_64bit
@@ -311,7 +312,6 @@ endif
 # Define all object files from source files
 #------------------------------------------------------------------------------------------------
 OBJS = $(patsubst %.c, %.o, $(PROJECT_SOURCE_FILES))
-
 # Define processes to execute
 #------------------------------------------------------------------------------------------------
 # Default target entry
