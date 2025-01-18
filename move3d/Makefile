@@ -26,13 +26,13 @@
 # Define required environment variables
 #------------------------------------------------------------------------------------------------
 # Define target platform: PLATFORM_DESKTOP, PLATFORM_WEB, PLATFORM_DRM
-PLATFORM              ?= PLATFORM_WEB
+PLATFORM              ?= PLATFORM_DESKTOP
 
 # Define project variables
 PROJECT_NAME          ?= move3d
 PROJECT_VERSION       ?= 1.0
 PROJECT_BUILD_PATH    ?= .
-# PROJECT_SOURCE_FILES  ?= move3d.c ../lib/cmd.c ../lib/kbd.c ../lib/gpads.c 
+# PROJECT_SOURCE_FILES  ?= move3d.c ../lib/cmd.c ../lib/kbd.c ../lib/gpads.c
 PROJECT_SOURCE_FILES  ?= move3d.c $(wildcard ../lib/*.c)
 
 RAYLIB_SRC_PATH       ?= C:\raylib\raylib\src
@@ -233,7 +233,7 @@ ifeq ($(PLATFORM),PLATFORM_WEB)
     # --preload-file resources   # specify a resources folder for data compilation
     # --source-map-base          # allow debugging in browser with source map
     LDFLAGS += -s USE_GLFW=3 -s TOTAL_MEMORY=$(BUILD_WEB_HEAP_SIZE) -s STACK_SIZE=$(BUILD_WEB_STACK_SIZE) -s FORCE_FILESYSTEM=1
-    
+
     # Build using asyncify
     ifeq ($(BUILD_WEB_ASYNCIFY),TRUE)
         LDFLAGS += -s ASYNCIFY -s ASYNCIFY_STACK_SIZE=$(BUILD_WEB_ASYNCIFY_STACK_SIZE)
@@ -349,4 +349,3 @@ ifeq ($(PLATFORM),PLATFORM_WEB)
 	del *.o *.html *.js
 endif
 	@echo Cleaning done
-
